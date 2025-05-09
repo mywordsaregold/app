@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "serve": "ionic serve --no-open",
     "test.e2e": "cypress run",
     "test.unit": "vitest",
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.3.0",
+    "@capacitor/android": "7.1.0",
     "@capacitor/app": "7.0.0",
     "@capacitor/core": "7.1.0",
     "@capacitor/haptics": "7.0.0",
@@ -19,13 +22,18 @@
     "@capacitor/status-bar": "7.0.0",
     "@ionic/react": "^8.5.0",
     "@ionic/react-router": "^8.5.0",
+    "@reduxjs/toolkit": "^2.6.1",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.4.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-redux": "^9.2.0",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "react-timer-hook": "^4.0.5",
+    "un": "^0.0.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@capacitor/cli": "7.1.0",
@@ -39,6 +47,8 @@
     "@vitejs/plugin-react": "^4.0.1",
     "cypress": "^13.5.0",
     "eslint": "^9.20.1",
+    "eslint-import-resolver-typescript": "^4.3.2",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",

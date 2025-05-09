@@ -25,6 +25,49 @@ export default tseslint.config(
       ],
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'array-bracket-spacing': [
+        'error',
+        'always',
+        {
+          objectsInArrays: false,
+        },
+      ],
+      'arrow-parens': ['error', 'as-needed'],
+      'comma-dangle': ['error', 'always-multiline'],
+      indent: ['error', 2],
+      'linebreak-style': ['off', 'unix'],
+      'max-len': [
+        'error',
+        {
+          code: 160,
+        },
+      ],
+      'no-trailing-spaces': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+      'object-curly-spacing': ['error', 'always'],
+      'quote-props': ['error', 'consistent'],
+      quotes: [
+        'error',
+        'double',
+        {
+          avoidEscape: true,
+        },
+      ],
+      semi: ['error', 'never'],
+      // 'sort-imports': [
+      //   'error',
+      //   {
+      //     ignoreDeclarationSort: false,
+      //     memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      //   },
+      // ],
     },
-  },
+  }
 )
