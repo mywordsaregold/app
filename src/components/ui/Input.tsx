@@ -3,11 +3,11 @@ import { FC, useState } from "react"
 import { ZodType } from "zod"
 
 export type InputProps = {
-  label?: string
-  placeholder?: string
-  schema: ZodType
-  onChange: (value: string) => void
-  value: string
+  readonly label?: string
+  readonly placeholder?: string
+  readonly schema: ZodType
+  readonly onChange: (value: string) => void
+  readonly value: string
 }
 
 export const Input: FC<InputProps> = ({
@@ -26,14 +26,14 @@ export const Input: FC<InputProps> = ({
   return (
     <IonInput
       className={className}
-      type="text"
+      errorText={validationResult.error?.errors?.[0]?.message}
       fill="outline"
       label={label}
       labelPlacement="floating"
-      placeholder={placeholder}
-      errorText={validationResult.error?.errors?.[0]?.message}
-      onIonInput={event => onChange(event.target.value as string)}
       onIonBlur={() => setIsTouched(true)}
+      onIonInput={event => onChange(event.target.value as string)}
+      placeholder={placeholder}
+      type="text"
     />
   )
 }

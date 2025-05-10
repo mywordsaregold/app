@@ -8,7 +8,7 @@ export const GetStarted: React.FC = () => {
   return (
     <AppPage align="center" justify="center">
       {!phrase && <RequestPhrase navigateInvite={navigateInvite} />}
-      {phrase && <ShowInvite navigateInvite={navigateInvite} phrase={phrase} />}
+      {phrase ? <ShowInvite navigateInvite={navigateInvite} phrase={phrase} /> : null}
     </AppPage>
   )
 }

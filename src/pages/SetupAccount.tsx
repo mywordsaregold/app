@@ -12,8 +12,10 @@ import { inviteSchema } from "../schemas/invite"
 import { useDebounce } from "@react-util/useDebounce"
 import { Notification } from "@ui/Notification"
 import { isApiError } from "../schemas/util"
+import { useAuth0 } from "@auth0/auth0-react"
 
 export function SetupAccount() {
+  const { logout } = useAuth0()
   const { accessToken } = useContext(AuthContext)
   const [ phrase, setPhrase ] = useState("")
   const [ nickname, setNickname ] = useState("")
@@ -50,40 +52,53 @@ export function SetupAccount() {
 
   return (
     <AppPage align="center" justify="center">
-      <Flex direction="column" align="center" justify="center" gap={8}>
-        <Text as="h1">Setup your account</Text>
+      <Flex align="center" direction="column" gap={8} justify="center">
+        <Text align="center" as="h1">
+          GOLD chat is an invite-only space
+        </Text>
+        <div>
+          <Text align="center" as="p" />
+          To enter the app you must have been invited by someone already on the app.
+          <Text align="center" as="p">
+            Such a person would have given you their invite phrase.
+          </Text>
+        </div>
         <Text as="p">You need to provide a nickname for yourself.</Text>
         <Input
           label="Sorry, please re-enter the invite phrase"
-          schema={inviteSchema.shape.phrase}
-          value={phrase}
           onChange={phrase => {
             setPhrase(phrase)
             debounce(phrase)
           }}
+          schema={inviteSchema.shape.phrase}
+          value={phrase}
         />
         <Input
           label="Enter your nickname"
+          onChange={nickname => setNickname(nickname)}
           schema={userSchema.shape.nickname}
           value={nickname}
-          onChange={nickname => setNickname(nickname)}
         />
-        {isFetching && (
+        {isFetching ? (
           <Flex gap={8}>
             <Spinner />
             Verifying...
           </Flex>
-        )}
-        {invite?.isFull && phrase === invite.phrase && (
+        ) : null}
+        {invite?.isFull && phrase === invite.phrase ? (
           <Notification type="danger">Unfortunately, you cannot use that invite anymore.</Notification>
-        )}
-        {error && (
+        ) : null}
+        {error ? (
           <Notification type="danger">{(isApiError(error) && error.message) || "Something went wrong"}</Notification>
-        )}
+        ) : null}
         <Button disabled={!formIsValid || isCreating} onClick={createUser}>
-          {isCreating && <Spinner />}
+          {isCreating ? <Spinner /> : null}
           Create your account
         </Button>
+        <br />
+        <br />
+        <br />
+        <Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
       </Flex>
     </AppPage>
   )

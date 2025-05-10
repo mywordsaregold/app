@@ -1,11 +1,19 @@
-import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react"
+import {
+  createApi,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/query/react"
 import { ZodType, z } from "zod"
 import {
   GetInvitesRequest,
   GetInvitesResponse,
   getInvitesResponseSchema,
 } from "../schemas/invite"
-import { ErrorResponse, errorResponseSchema, StdResponse } from "../schemas/util"
+import {
+  ErrorResponse,
+  errorResponseSchema,
+  StdResponse,
+} from "../schemas/util"
 import {
   CreateUserRequest,
   createUserRequestSchema,
@@ -25,9 +33,8 @@ function validateResponse<Schema extends ZodType>(
   hookName: string,
   schema: Schema,
 ) {
-  type Payload = z.infer<Schema> extends StdResponse<infer Payload>
-    ? Payload
-    : never
+  type Payload =
+    z.infer<Schema> extends StdResponse<infer Payload> ? Payload : never;
   return (response: unknown): Payload => {
     const result = schema.safeParse(response)
     if (!result.success) {

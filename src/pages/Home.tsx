@@ -26,8 +26,8 @@ export function Home() {
     return (
       <AppPage align="center" justify="center">
         {!error && <Spinner />}
-        {error && <Icon icon={alertCircleOutline} size="large" />}
-        {error && <span>Something went wrong, please reload the page.</span>}
+        {!!error && <Icon icon={alertCircleOutline} size="large" />}
+        {!!error && <span>Something went wrong, please reload the page.</span>}
       </AppPage>
     )
   }
@@ -42,7 +42,7 @@ export function Home() {
 
   return (
     <AppPage align="center" justify="center">
-      <Flex direction="column" align="center" justify="center">
+      <Flex align="center" direction="column" justify="center">
         <Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
       </Flex>
     </AppPage>

@@ -1,5 +1,5 @@
-import { IonSpinner } from '@ionic/react'
-import { ComponentPropsWithoutRef, FC } from 'react'
+import { IonSpinner } from "@ionic/react"
+import { ComponentPropsWithoutRef, FC } from "react"
 
 export type SpinnerProps = ComponentPropsWithoutRef<typeof IonSpinner>
 

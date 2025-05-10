@@ -41,10 +41,10 @@ export const RequestPhrase: FC<RequestPhraseProps> = ({ navigateInvite }) => {
   const inviteNotFound = phrase === debouncedPhrase && isPhraseValid(phrase) && !isFetching && !inviteFound
   return (
     <GetStartedContainer>
-      <Text as="h1" align="center">
+      <Text align="center" as="h1">
         GOLD chat is an invite-only space
       </Text>
-      <Text as="p" align="center">
+      <Text align="center" as="p">
         To enter the app you must have been invited by someone already on the
         app.
         <br />
@@ -52,15 +52,15 @@ export const RequestPhrase: FC<RequestPhraseProps> = ({ navigateInvite }) => {
       </Text>
       <Input
         label="Enter an invite phrase"
+        onChange={handlePhraseChange}
         schema={phraseSchema}
         value={phrase}
-        onChange={handlePhraseChange}
       />
-      {isFetching && <Spinner />}
-      {inviteFound && <Button onClick={submitPhrase}>Accept their invitation</Button>}
-      {inviteNotFound && <Text as="p" align='center'>
+      {isFetching ? <Spinner /> : null}
+      {inviteFound ? <Button onClick={submitPhrase}>Accept their invitation</Button> : null}
+      {inviteNotFound ? <Text align='center' as="p">
         Couldn't find an invite with that phrase
-      </Text>}
+                        </Text> : null}
     </GetStartedContainer>
   )
 }

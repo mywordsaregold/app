@@ -1,18 +1,18 @@
-import { IonText } from '@ionic/react'
+import { IonText } from "@ionic/react"
 import {
   ComponentPropsWithoutRef,
   CSSProperties,
   ElementType,
   PropsWithChildren,
-} from 'react'
+} from "react"
 
 export type TextProps<TTag extends ElementType> = PropsWithChildren<
   ComponentPropsWithoutRef<TTag> &
     ComponentPropsWithoutRef<typeof IonText> & {
-      as?: TTag
+      readonly as?: TTag
     }
 > & {
-  align?: CSSProperties['textAlign']
+  readonly align?: CSSProperties["textAlign"]
 }
 
 export const Text = <TTag extends ElementType>({
@@ -20,7 +20,7 @@ export const Text = <TTag extends ElementType>({
   children,
   ...props
 }: TextProps<TTag>) => {
-  const Component = as ?? 'p'
+  const Component = as ?? "p"
   const style: CSSProperties = {
     textAlign: props.align,
   }

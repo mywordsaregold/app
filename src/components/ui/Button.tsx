@@ -7,7 +7,7 @@ export type ButtonProps = PropsWithChildren<
 >
 
 export const Button: FC<ButtonProps> = ({ children, ...props }) => {
-  return <IonButton {...props}>
-    <Flex gap={8} align="center">{children}</Flex>
-  </IonButton>
+  return (<IonButton {...props}>
+    <Flex align="center" gap={8}>{children}</Flex>
+          </IonButton>)
 }

@@ -1,10 +1,10 @@
-import { Flex } from '@ui/Flex'
+import { Flex } from "@ui/Flex"
 
 export const GetStartedContainer: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   return (
-    <Flex direction="column" align="center" justify="center">
+    <Flex align="center" direction="column" justify="center">
       {children}
     </Flex>
   )

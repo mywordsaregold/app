@@ -30,7 +30,7 @@ export const AuthContextComponent: FC<PropsWithChildren> = ({ children }) => {
   return (
     <AuthContext.Provider value={authContextValue}>
       {children}
-      {isLoading && <Spinner />}
+      {isLoading ? <Spinner /> : null}
     </AuthContext.Provider>
   )
 }

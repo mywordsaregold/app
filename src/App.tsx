@@ -16,17 +16,17 @@ const App: React.FC = () => {
     <IonApp>
       <Provider store={store}>
         <Auth0Provider
-          domain={AUTH0_DOMAIN}
-          clientId={AUTH0_CLIENT_ID}
           authorizationParams={{
             redirect_uri: window.location.origin,
             audience: AUTH0_API_AUDIENCE,
           }}
+          clientId={AUTH0_CLIENT_ID}
+          domain={AUTH0_DOMAIN}
         >
           <AuthContextComponent>
             <IonReactRouter>
               <IonRouterOutlet>
-                <Route exact path={ROUTER_PATHS.LOGIN} component={GetStarted} />
+                <Route component={GetStarted} exact path={ROUTER_PATHS.LOGIN} />
                 <Route exact path="/">
                   <Home />
                 </Route>

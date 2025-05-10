@@ -5,7 +5,7 @@ import { Text } from "./Text"
 import { PropsWithChildren } from "react"
 
 export type NotificationProps = PropsWithChildren<{
-  type?: "danger"
+  readonly type?: "danger"
 }>
 
 export function Notification({ children, type }: NotificationProps) {
@@ -13,13 +13,17 @@ export function Notification({ children, type }: NotificationProps) {
   const color = type === "danger" ? "light" : ""
   const icon = type === "danger" ? alertCircleOutline : undefined
   return (
-    <Flex align="center" gap={16} additionalStyles={{
-      backgroundColor: `var(--${bgColor})`,
-      borderRadius: 12,
-      paddingLeft: 16,
-      paddingRight: 16,
-    }}>
-      <Icon icon={icon} size="large" color={color} />
+    <Flex
+      additionalStyles={{
+        backgroundColor: `var(--${bgColor})`,
+        borderRadius: 12,
+        paddingLeft: 16,
+        paddingRight: 16,
+      }}
+      align="center"
+      gap={16}
+    >
+      <Icon color={color} icon={icon} size="large" />
       <Text color={color}>
         {children}
       </Text>
